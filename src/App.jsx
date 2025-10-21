@@ -1,9 +1,9 @@
 // App.jsx
-import React, { useState } from 'react';
-import AddTrip from './Components/Add';
-import TripList from './Components/List';
-import TripSummary from './Components/Summary';
-import Itinerary from './components/Itinerary'; 
+import React, { useState } from 'react';  
+import TripList from './TripList';
+import TripSummary from './TripSummary';
+import AddTrip from './AddTrip';
+import Itinerary from './Itinerary'
 
 function App() {
   const [selectedTrip, setSelectedTrip] = useState(null);
@@ -22,7 +22,8 @@ function App() {
     <div className="app-background">
       <div className="container mx-auto px-4 py-8">
         <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-blue-800 mb-2">🛫 Trip Planner 🛫</h1>
+          <h1 className="text-4xl font-bold text-blue-800 mb-2">
+🛫 Trip Planner 🛫</h1>
           <p className="text-lg text-blue-600">Plan your adventures with ease</p>
         </header>
 

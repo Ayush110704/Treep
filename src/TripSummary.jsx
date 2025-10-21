@@ -44,4 +44,3 @@ export default function TripSummary({ selectedTrip }) {
     </div>
   );
 }
-
