@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import AddTrip from './Components/Add';
 import TripList from './Components/List';
-import TripSummary from './components/TripSummary';
+import TripSummary from './Components/Summary';
 import Itinerary from './components/Itinerary'; 
 
 function App() {
