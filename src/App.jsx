@@ -1,7 +1,7 @@
 // App.jsx
 import React, { useState } from 'react';
 import AddTrip from './Components/Add';
-import TripList from './components/TripList';
+import TripList from './Components/List';
 import TripSummary from './components/TripSummary';
 import Itinerary from './components/Itinerary'; 
 
