@@ -1,9 +1,11 @@
-// App.jsx
-import React, { useState } from 'react';  
+import React, { useState } from 'react';
+import { Routes, Route, Navigate } from 'react-router';
+import NavBar from './NavBar';
+import AddTrip from './AddTrip';
 import TripList from './TripList';
 import TripSummary from './TripSummary';
-import AddTrip from './AddTrip';
-import Itinerary from './Itinerary'
+import Itinerary from './Itinerary'; 
+import bg1 from './assets/bg1.jpg';
 
 function App() {
   const [selectedTrip, setSelectedTrip] = useState(null);
@@ -11,7 +13,6 @@ function App() {
 
   const handleTripAdded = () => {
     setRefreshTrips(prev => !prev);
-    setSelectedTrip(null);
   };
 
   const handleTripSelect = (trip) => {
@@ -19,36 +20,41 @@ function App() {
   };
 
   return (
-    <div className="app-background">
-      <div className="container mx-auto px-4 py-8">
-        <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-blue-800 mb-2">
-🛫 Trip Planner 🛫</h1>
-          <p className="text-lg text-blue-600">Plan your adventures with ease</p>
-        </header>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Left Column */}
-          <div className="space-y-6">
-            <AddTrip onTripAdded={handleTripAdded} />
-           
-          </div>
-
-          {/* Right Column */}
-          <div className="space-y-6">
-             <TripList 
-              onTripSelect={handleTripSelect} 
-              refresh={refreshTrips} 
+    // ✅ Background image applied here
+  <div
+        className="min-h-screen bg-cover bg-center flex items-center justify-center py-10 px-4"
+        style={{
+          backgroundImage: `url(${bg1})`,
+        }}
+      >
+      <div>
+        <div className="container mx-auto px-1 py-8 max-w-6xl">
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Navigate to="/add-trip" replace />} />
+            <Route
+              path="/add-trip"
+              element={<AddTrip onTripAdded={handleTripAdded} />}
             />
-            <TripSummary selectedTrip={selectedTrip} />
-            <Itinerary selectedTrip={selectedTrip} />
-          </div>
+            <Route
+              path="/trips"
+              element={
+                <TripList
+                  onTripSelect={handleTripSelect}
+                  refresh={refreshTrips}
+                />
+              }
+            />
+            <Route
+              path="/summary"
+              element={<TripSummary selectedTrip={selectedTrip} />}
+            />
+            <Route
+              path="/itinerary"
+              element={<Itinerary selectedTrip={selectedTrip} />}
+            />
+          </Routes>
         </div>
-
-        {/* Footer */}
-        <footer className="text-center mt-12 text-gray-600">
-          <p>© 2024 TripPlanner - Your Ultimate Travel Companion</p>
-        </footer>
       </div>
     </div>
   );
