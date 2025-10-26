@@ -100,7 +100,7 @@ export default function TripList({ onTripSelect, refresh }) {
                   {/* Dates with arrow */}
                   <div className="flex items-center gap-2">
                     <input type="date" value={editingTrip.startDate} onChange={(e) => handleEditChange('startDate', e.target.value)} className="border border-gray-300 text-white rounded-lg p-2 flex-1" />
-                    <span className="text-gray-500">→</span>
+                    <span className="text-white">→</span>
                     <input type="date" value={editingTrip.endDate} onChange={(e) => handleEditChange('endDate', e.target.value)} className="border border-gray-300 text-white rounded-lg p-2 flex-1" />
                   </div>
 
