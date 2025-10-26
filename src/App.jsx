@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import NavBar from './NavBar';
 import AddTrip from './AddTrip';
 import TripList from './TripList';
@@ -20,13 +20,12 @@ function App() {
   };
 
   return (
-    // ✅ Background image applied here
-  <div
-        className="min-h-screen bg-cover bg-center flex items-center justify-center py-10 px-4"
-        style={{
-          backgroundImage: `url(${bg1})`,
-        }}
-      >
+    <div
+      className="min-h-screen bg-cover bg-center flex items-center justify-center py-10 px-4"
+      style={{
+        backgroundImage: `url(${bg1})`,
+      }}
+    >
       <div>
         <div className="container mx-auto px-1 py-8 max-w-6xl">
           <NavBar />
