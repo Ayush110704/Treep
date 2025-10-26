@@ -85,7 +85,7 @@ export default function AddTrip({ onTripAdded }) {
   return (
     // NEW ADDED LINE - START
     <>
-      <div className="min-h-screen bg-transparent from-blue-50 to-blue-100 flex items-center justify-center py-10 px-4">
+      <div className="min-h-screen bg-transparent backdrop-blur-md from-blue-50 to-blue-100 flex items-center justify-center py-10 px-4">
         <form className="bg-transparent backdrop-blur-md shadow-xl p-8 border border-gray-200 rounded-2xl max-w-2xl w-full" onSubmit={saveTrip}>
           <h2 className="text-3xl font-bold mb-6 text-blue-800 text-center">✈️ Add New Trip</h2>
 
