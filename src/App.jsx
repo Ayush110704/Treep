@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router';
 import NavBar from './NavBar';
 import AddTrip from './AddTrip';
 import TripList from './TripList';
@@ -11,8 +11,8 @@ function App() {
   const [selectedTrip, setSelectedTrip] = useState(null);
   const [refreshTrips, setRefreshTrips] = useState(false);
 
-  const handleTripAdded = () => {
-    setRefreshTrips(prev => !prev);
+  const handleTripAdded = () => {   // ye jab call hoga jab new trip add hogi (true ko fasle kar de ga ya false ko true kar de ga)
+    setRefreshTrips(prev => !prev);  // state ko toggle kar ta hai isse triplist ko pata chal ta hai data refresh karna hai
   };
 
   const handleTripSelect = (trip) => {
@@ -33,7 +33,7 @@ function App() {
             <Route path="/" element={<Navigate to="/add-trip" replace />} />
             <Route
               path="/add-trip"
-              element={<AddTrip onTripAdded={handleTripAdded} />}
+              element={<AddTrip onTripAdded={handleTripAdded} />} // ontripadded prop me handletripadded paas ki bcz new trip add hone pe parent ko notify kar ta hai aur uske baad triplist refresh kar sakta hai
             />
             <Route
               path="/trips"
@@ -46,7 +46,7 @@ function App() {
             />
             <Route
               path="/summary"
-              element={<TripSummary selectedTrip={selectedTrip} />}
+              element={<TripSummary selectedTrip={selectedTrip} />}  // selected trip ka data use kr ne k liye
             />
             <Route
               path="/itinerary"

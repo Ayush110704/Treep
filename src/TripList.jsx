@@ -10,21 +10,19 @@ export default function TripList({ onTripSelect, refresh }) {
   useEffect(() => {
     const savedTrips = JSON.parse(localStorage.getItem('trips') || '[]');
     setTrips(savedTrips);
-  }, [refresh]);
+  }, [refresh]); 
 
-  const deleteTrip = (tripId) => {
+  const deleteTrip = (tripId) => { 
     const updatedTrips = trips.filter(trip => trip.id !== tripId);
     localStorage.setItem('trips', JSON.stringify(updatedTrips));
     setTrips(updatedTrips);
     if (onTripSelect) onTripSelect(null);
   };
 
-  const handleTripClick = (trip) => {
-    // Set the selected trip for the parent component (if needed)
+  const handleTripClick = (trip) => { 
     if (onTripSelect) {
       onTripSelect(trip);
-    }
-    // Navigate to summary page
+    } 
     navigate('/summary');
   };
 
@@ -87,7 +85,7 @@ export default function TripList({ onTripSelect, refresh }) {
         <div className="space-y-4">
           {trips.map(trip => (
             <div key={trip.id} className="border border-white rounded-lg p-4 transition-colors duration-200">
-              {editingTrip && editingTrip.id === trip.id ? (
+              {editingTrip && editingTrip.id === trip.id ? ( // agar editing trip ka id current trip ke id ke barabar hai toh edit mode dikhaye
                 // Edit Mode - Compact
                 <div className="space-y-3">
                   {/* Basic Info */}

@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-// NEW ADDED LINE - START
+import { useNavigate } from "react-router"; 
 import { Bounce, Slide, ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-// NEW ADDED LINE - END
+import 'react-toastify/dist/ReactToastify.css'; 
 
 export default function AddTrip({ onTripAdded }) {
   const [form, setForm] = useState({
@@ -15,7 +13,7 @@ export default function AddTrip({ onTripAdded }) {
   const navigate = useNavigate();
 
   const updateForm = (field, value) => {
-    setForm(prev => ({ ...prev, [field]: value }));
+    setForm(prev => ({ ...prev, [field]: value })); // pahale data copy kr ta hai fir field ko check kr k value update kr return kr ta hai 
   };
 
   const updateMember = (field, value) => {
@@ -23,30 +21,27 @@ export default function AddTrip({ onTripAdded }) {
   };
 
   const addMember = () => {
-    if (member.name.trim()) {
+    if (member.name.trim()) {  // new member ko add kr ta hai agar khali hai to uniq id k sath
       setMembers(prev => [...prev, { ...member, id: Date.now() }]);
-      setMember({ name: "", contact: "", email: "" });
-      // NEW ADDED LINE
+      setMember({ name: "", contact: "", email: "" }); 
       toast.success("Member Added Successfully!");
     }
   };
 
   const removeMember = (index) => {
-    setMembers(prev => prev.filter((_, i) => i !== index));
-    // NEW ADDED LINE
+    setMembers(prev => prev.filter((_, i) => i !== index));  // wo element hatao jiska index remove karne wale index ke barabar hai
     toast.success("Member Removed Successfully!");
   };
 
   const saveTrip = (e) => {
     e.preventDefault();
 
-    if (!form.tripName.trim() || !form.destination.trim()) {
-      // NEW ADDED LINE - REPLACED ALERT WITH TOAST
+    if (!form.tripName.trim() || !form.destination.trim()) { 
       toast.error("Please fill in Trip Name and Destination");
       return;
     }
 
-    const trips = JSON.parse(localStorage.getItem("trips") || "[]");
+    const trips = JSON.parse(localStorage.getItem("trips") || "[]");  // taki purane data PE overwrite na ho jaye
     const newTrip = {
       id: Date.now(),
       name: form.tripName,
@@ -59,8 +54,8 @@ export default function AddTrip({ onTripAdded }) {
       members,
       createdAt: new Date().toISOString(),
     };
-
-    trips.push(newTrip);
+ 
+    trips.push(newTrip);  // new trip ko array me add kr ta hai  fir save kr ta hai localstorage me as json
     localStorage.setItem("trips", JSON.stringify(trips));
 
     // Reset form and navigate
@@ -73,17 +68,13 @@ export default function AddTrip({ onTripAdded }) {
 
     if (onTripAdded) onTripAdded();
     
-    // NEW ADDED LINE - REPLACED ALERT WITH TOAST
     toast.success("Trip Saved Successfully!");
-    
-    // NEW ADDED LINE - Navigate after a short delay to show the toast
     setTimeout(() => {
       navigate("/trips");
     }, 2000);
   };
 
-  return (
-    // NEW ADDED LINE - START
+  return ( 
     <>
       <div className="min-h-screen bg-transparent backdrop-blur-md from-blue-50 to-blue-100 flex items-center justify-center py-10 px-4">
         <form className="bg-transparent backdrop-blur-md shadow-xl p-8 border border-gray-200 rounded-2xl max-w-2xl w-full" onSubmit={saveTrip}>
@@ -91,11 +82,11 @@ export default function AddTrip({ onTripAdded }) {
 
           {/* Trip Info */}
           <input type="text" placeholder="Trip Name *" className="border border-gray-300 rounded-lg p-3 w-full mb-3 focus:ring-2 focus:ring-blue-500"
-            value={form.tripName} onChange={(e) => updateForm('tripName', e.target.value)} required />
+            value={form.tripName} onChange={(e) => updateForm('tripName', e.target.value)}  />
           <input type="text" placeholder="Boarding" className="border border-gray-300 rounded-lg p-3 w-full mb-3 focus:ring-2 focus:ring-blue-500"
             value={form.boarding} onChange={(e) => updateForm('boarding', e.target.value)} />
           <input type="text" placeholder="Destination *" className="border border-gray-300 rounded-lg p-3 w-full mb-3 focus:ring-2 focus:ring-blue-500"
-            value={form.destination} onChange={(e) => updateForm('destination', e.target.value)} required />
+            value={form.destination} onChange={(e) => updateForm('destination', e.target.value)} />
 
           <div className="flex gap-3 mb-3">
             <input type="date" className="border border-gray-300 rounded-lg p-3 w-1/2 focus:ring-2 focus:ring-blue-500"

@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
-// NEW ADDED LINE - START
+import React, { useState, useEffect } from 'react'; 
 import { Bounce, Slide, ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-// NEW ADDED LINE - END
+import 'react-toastify/dist/ReactToastify.css'; 
 
 export default function Itinerary({ selectedTrip }) {
   const [activities, setActivities] = useState([]);
@@ -27,8 +25,7 @@ export default function Itinerary({ selectedTrip }) {
       setActivities(updatedActivities);
       localStorage.setItem(`itinerary_${selectedTrip.id}`, JSON.stringify(updatedActivities));
       setDay('');
-      setDescription('');
-      // NEW ADDED LINE
+      setDescription(''); 
       toast.success("Activity Added Successfully!");
     }
   };
@@ -36,8 +33,7 @@ export default function Itinerary({ selectedTrip }) {
   const deleteActivity = (activityId) => {
     const updatedActivities = activities.filter(activity => activity.id !== activityId);
     setActivities(updatedActivities);
-    localStorage.setItem(`itinerary_${selectedTrip.id}`, JSON.stringify(updatedActivities));
-    // NEW ADDED LINE
+    localStorage.setItem(`itinerary_${selectedTrip.id}`, JSON.stringify(updatedActivities)); 
     toast.success("Activity Deleted Successfully!");
   };
 
@@ -56,8 +52,7 @@ export default function Itinerary({ selectedTrip }) {
       localStorage.setItem(`itinerary_${selectedTrip.id}`, JSON.stringify(updatedActivities));
       setEditingActivity(null);
       setDay('');
-      setDescription('');
-      // NEW ADDED LINE
+      setDescription(''); 
       toast.info("Activity Updated Successfully!");
     }
   };
@@ -132,7 +127,6 @@ export default function Itinerary({ selectedTrip }) {
         )}
       </div>
       
-      {/* NEW ADDED LINE - START */}
       <ToastContainer 
         position="top-right"
         autoClose={2000}
@@ -145,8 +139,7 @@ export default function Itinerary({ selectedTrip }) {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      />
-      {/* NEW ADDED LINE - END */}
+      /> 
     </> 
   );
 }
