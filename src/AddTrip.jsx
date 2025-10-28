@@ -148,8 +148,7 @@ export default function AddTrip({ onTripAdded }) {
           </button>
         </form>
       </div>
-      
-      {/* NEW ADDED LINE - START */}
+       
       <ToastContainer 
         position="top-right"
         autoClose={2000}
@@ -162,9 +161,7 @@ export default function AddTrip({ onTripAdded }) {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      />
-      {/* NEW ADDED LINE - END */}
-    </>
-    // NEW ADDED LINE - END
+      /> 
+    </> 
   );
 }
